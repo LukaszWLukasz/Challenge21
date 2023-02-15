@@ -1,75 +1,47 @@
-﻿
+﻿using Challenge21;
 
-int number = 600758;
-string numberInString = number.ToString();
-Char[] letters = numberInString.ToArray();
+Employee user1 = new Employee ("Kasia", "Nowak", 30);
+Employee user2 = new Employee ("Basia", "Kowalska", 40);
+Employee user3 = new Employee ("Asia","Joanna", 50);
 
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
+user1.AddScore(2);
+user1.AddScore(3);
+user1.AddScore(4);
+user1.AddScore(2);
+user1.AddScore(2);
 
-foreach (char letter in letters)
+user2.AddScore(5);
+user2.AddScore(4);
+user2.AddScore(5);
+user2.AddScore(6);
+user2.AddScore(7);
+
+user3.AddScore(7);
+user3.AddScore(2);
+user3.AddScore(7);
+user3.AddScore(8);
+user3.AddScore(9);
+
+List<Employee> employess = new List<Employee>()
 {
-    if (letter == '0')
-    {
-        counter0++;
-    }
-    else if (letter == '1')
-    {
-        counter1++;
-    }
-    else if (letter == '2')
-    {
-        counter2++;
-    }
-    else if (letter == '3')
-    {
-        counter3++;
-    }
-    else if (letter == '4')
-    {
-        counter4++;
-    }
-    else if (letter == '5')
-    {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else if (letter == '9')
-    {
-        counter9++;
-    }
+    user1, user2, user3
+};
+var maxResult = -1;
+Employee userWithMaxResult = null;
 
+
+foreach (var employee in employess)
+{
+    if (employee.Result > maxResult)
+    {
+        maxResult = employee.Result;
+        userWithMaxResult= employee;
+        
+    }
 }
+Console.WriteLine("Pracownik z największą ilością punktów ---  " + userWithMaxResult.Result + "\n" + userWithMaxResult.Name +"   " + userWithMaxResult.Surname + " wiek " + userWithMaxResult.Age);
 
-Console.WriteLine("Ilość cyfr dla\t" + number);
-Console.WriteLine("Ilość dla\t" + "0\t" + "==>" + counter0);
-Console.WriteLine("Ilość dla\t" + "1\t" + "==>" + counter1);
-Console.WriteLine("Ilość dla\t" + "2\t" + "==>" + counter2);
-Console.WriteLine("Ilość dla\t" + "3\t" + "==>" + counter3);
-Console.WriteLine("Ilość dla\t" + "4\t" + "==>" + counter4);
-Console.WriteLine("Ilość dla\t" + "5\t" + "==>" + counter5);
-Console.WriteLine("Ilość dla\t" + "6\t" + "==>" + counter6);
-Console.WriteLine("Ilość dla\t" + "7\t" + "==>" + counter7);
-Console.WriteLine("Ilość dla\t" + "8\t" + "==>" + counter8);
-Console.WriteLine("Ilość dla\t" + "9\t" + "==>" + counter9);
+
+
 
 
