@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge21", "Challenge21\Challenge21.csproj", "{38D8AD54-5092-4C3B-A0A6-ED5657DEA7BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge21", "Challenge21\Challenge21.csproj", "{38D8AD54-5092-4C3B-A0A6-ED5657DEA7BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge21.Tests", "Challenge21.Tests\Challenge21.Tests.csproj", "{BB2979C8-0656-40E2-B4CE-2383132C8870}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{38D8AD54-5092-4C3B-A0A6-ED5657DEA7BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38D8AD54-5092-4C3B-A0A6-ED5657DEA7BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38D8AD54-5092-4C3B-A0A6-ED5657DEA7BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB2979C8-0656-40E2-B4CE-2383132C8870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2979C8-0656-40E2-B4CE-2383132C8870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2979C8-0656-40E2-B4CE-2383132C8870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2979C8-0656-40E2-B4CE-2383132C8870}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
