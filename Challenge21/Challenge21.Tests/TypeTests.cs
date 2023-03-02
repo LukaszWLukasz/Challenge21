@@ -6,8 +6,8 @@
         public void EmpolyeeDifrentTypeReference()
         {
             // arrange
-            var Employee1 = GetUser("Łukasz", "Kowalski", 30);
-            var Employee2 = GetUser("Karol", "Kowalski", 30);
+            var Employee1 = GetUser("Łukasz", "Kowalski");
+            var Employee2 = GetUser("Karol", "Kowalski");
                         
             // act
 
@@ -18,9 +18,9 @@
 
         }
 
-        private Employee GetUser(string name, string surname, int age)
+        private Employee GetUser(string name, string surname)
         {
-            return new Employee(name, surname, age);
+            return new Employee(name, surname);
         }
 
         [Test]
