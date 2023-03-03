@@ -19,7 +19,7 @@
 
             // assert
 
-            Assert.AreEqual(7F, statistics.Max);
+            Assert.AreEqual(7, statistics.Max);
 
         }
 
@@ -39,7 +39,7 @@
 
             // assert
 
-            Assert.AreEqual(5F, statistics.Min);
+            Assert.AreEqual(5, statistics.Min);
 
         }
 
@@ -59,7 +59,7 @@
 
             // assert
 
-            Assert.AreEqual(6.0F, statistics.Average);
+            Assert.AreEqual(Math.Round(6.0, 2), Math.Round(statistics.Average, 2));
         }
     }
 }
