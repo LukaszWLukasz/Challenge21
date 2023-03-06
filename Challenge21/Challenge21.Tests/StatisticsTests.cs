@@ -15,7 +15,7 @@
 
             // act
 
-            var statistics = employee.GetStatistics();
+            var statistics = employee.GetStatisticsWithForEach();
 
             // assert
 
@@ -35,7 +35,7 @@
 
             // act
 
-            var statistics = employee.GetStatistics();
+            var statistics = employee.GetStatisticsWithForEach();
 
             // assert
 
@@ -55,11 +55,11 @@
 
             // act
 
-            var statistics = employee.GetStatistics();
+            var statistics = employee.GetStatisticsWithForEach();
 
             // assert
 
-            Assert.AreEqual(Math.Round(6.0, 2), Math.Round(statistics.Average, 2));
+            Assert.AreEqual(Math.Round(6.0, 3), Math.Round(statistics.Average, 3));
         }
     }
 }
