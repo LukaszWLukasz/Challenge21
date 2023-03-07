@@ -15,7 +15,7 @@
 
             // act
 
-            var statistics = employee.GetStatisticsWithForEach();
+            var statistics = employee.GetStatistics();
 
             // assert
 
@@ -30,16 +30,16 @@
             // arrange
             var employee = new Employee("Łukasz", "Walczak");
             employee.AddGrade(5);
-            employee.AddGrade(6);
+            employee.AddGrade("a");
             employee.AddGrade(7);
 
             // act
 
-            var statistics = employee.GetStatisticsWithForEach();
+            var statistics = employee.GetStatistics();
 
             // assert
 
-            Assert.AreEqual(5, statistics.Min);
+            Assert.AreEqual(statistics.Min, 5);
 
         }
 
@@ -50,16 +50,54 @@
             // arrange
             var employee = new Employee("Łukasz", "Walczak");
             employee.AddGrade(5);
-            employee.AddGrade(6);
+            employee.AddGrade("c");
             employee.AddGrade(7);
 
             // act
 
-            var statistics = employee.GetStatisticsWithForEach();
+            var statistics = employee.GetStatistics();
 
             // assert
 
-            Assert.AreEqual(Math.Round(6.0, 3), Math.Round(statistics.Average, 3));
+            Assert.AreEqual(Math.Round(24.0, 3), Math.Round(statistics.Average, 3));
+        }
+
+        [Test]
+
+        public void EmployeeCheckPointsLetterChar()
+        {
+            // arrange
+            var employee = new Employee("Łukasz", "Walczak");
+            employee.AddGrade('A');
+            employee.AddGrade('b');
+            employee.AddGrade('C');
+
+            // act
+
+            var statistics = employee.GetStatistics();
+
+            // assert
+
+            Assert.AreEqual(statistics.AverageLetter, 'a');
+        }
+
+        [Test]
+
+        public void EmployeeCheckPointsLetterString()
+        {
+            // arrange
+            var employee = new Employee("Łukasz", "Walczak");
+            employee.AddGrade("c");
+            employee.AddGrade("C");
+            employee.AddGrade("a");
+
+            // act
+
+            var statistics = employee.GetStatistics();
+
+            // assert
+
+            Assert.AreEqual(statistics.AverageLetter, 'b');
         }
     }
 }
