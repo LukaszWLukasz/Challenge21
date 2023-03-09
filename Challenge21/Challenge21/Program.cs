@@ -1,9 +1,10 @@
 ﻿using Challenge21;
 
-Console.WriteLine("Witaj w programie Oceny Pracowników");
+Console.WriteLine("Witaj w programie Oceny Pracownika");
 Console.WriteLine();
 
-var employee = new Employee();
+var employee = new Employee("Łukasz", "Walczak");
+
 
 while (true)
 {
@@ -13,7 +14,17 @@ while (true)
     {
         break;
     }
-    employee.AddGrade(input);
+
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception catched {e.Message}");
+    }
+   
+        
 }
 
 var statistics = employee.GetStatistics();
