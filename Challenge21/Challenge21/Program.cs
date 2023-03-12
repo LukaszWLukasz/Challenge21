@@ -3,7 +3,7 @@
 Console.WriteLine("Witaj w programie Oceny Pracownika");
 Console.WriteLine();
 
-var employee = new Employee("Łukasz", "Walczak");
+var employee = new Employee("Łukasz", "Walczak", 30, 'M');
 
 
 while (true)

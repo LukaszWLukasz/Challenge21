@@ -2,19 +2,20 @@
 
 namespace Challenge21
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
-               
-        public Employee(string name, string surname)
+
+        public Employee(string name, string surname, int age, char sex)
+            : base(name, surname, age, sex)
         {
-            this.Name = name;
-            this.Surname = surname;
+
         }
-        public string Name { get; private set; }
+        public Employee()
+            : this("name", "surname", 0, 'M')
+        {
 
-        public string Surname { get; private set; }
-
+        }
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
@@ -24,13 +25,11 @@ namespace Challenge21
             else
             {
                 throw new Exception("Invalid grade value");
-           }
+            }
         }
 
         public void AddGrade(string grade)
         {
-
-
             if (float.TryParse(grade, out float result))
             {
                 this.AddGrade(result);
@@ -114,12 +113,11 @@ namespace Challenge21
             statistics.Average = 0;
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
-            
 
-            
+
+
             foreach (var grade in this.grades)
             {
-                
                 statistics.Max = Math.Max(statistics.Max, grade);
                 statistics.Min = Math.Min(statistics.Min, grade);
                 statistics.Average += grade;
@@ -148,13 +146,12 @@ namespace Challenge21
                 case var average when average <= 19:
                     statistics.AverageLetter = 'E';
                     break;
-
             }
 
             return statistics;
         }
-                                                          
+
     }
-    
-    
+
+
 }
