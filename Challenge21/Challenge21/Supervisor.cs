@@ -1,17 +1,10 @@
-﻿using System.Diagnostics;
-
-namespace Challenge21
+﻿namespace Challenge21
 {
-    public class Employee : IEmployee
+    public class Supervisor : IEmployee
     {
         private List<float> grades = new List<float>();
 
-        public Employee()
-        {
-
-        }
-
-        public Employee(string name, string surname, int age, char sex)
+        public Supervisor(string name, string surname, int age, char sex)
         {
             this.Name = name;
             this.Surname = surname;
@@ -45,27 +38,66 @@ namespace Challenge21
             {
                 switch (grade)
                 {
-                    case "A" or "a":
+                    case "6.0":
                         this.grades.Add(100);
                         break;
-                    case "B" or "b":
+                    case "6-":
+                        this.grades.Add(95);
+                        break;
+                    case "5+":
+                        this.grades.Add(90);
+                        break;
+                    case "5.0":
+                        this.grades.Add(85);
+                        break;
+                    case "5-":
                         this.grades.Add(80);
                         break;
-                    case "C" or "c":
+                    case "4+":
+                        this.grades.Add(75);
+                        break;
+                    case "4.0":
+                        this.grades.Add(70);
+                        break;
+                    case "4-":
+                        this.grades.Add(65);
+                        break;
+                    case "3+":
                         this.grades.Add(60);
                         break;
-                    case "D" or "d":
+                    case "3.0":
+                        this.grades.Add(55);
+                        break;
+                    case "3-":
+                        this.grades.Add(50);
+                        break;
+                    case "2+":
+                        this.grades.Add(45);
+                        break;
+                    case "2.0":
                         this.grades.Add(40);
                         break;
-                    case "E" or "e":
+                    case "2-":
+                        this.grades.Add(35);
+                        break;
+                    case "1+":
+                        this.grades.Add(30);
+                        break;
+                    case "1.0":
                         this.grades.Add(20);
                         break;
+                    case "1-":
+                        this.grades.Add(10);
+                        break;
+                    case "0":
+                        this.grades.Add(0);
+                        break;
+
                     default:
-                        throw new Exception("Wrong letter");
+                        throw new Exception("Wrong number");
                 }
             }
         }
-
         public void AddGrade(long grade)
         {
             var longToFloat = (float)grade;
@@ -86,31 +118,8 @@ namespace Challenge21
 
         public void AddGrade(char grade)
         {
-            switch (grade)
-            {
-                case 'A':
-                case 'a':
-                    this.grades.Add(100);
-                    break;
-                case 'B':
-                case 'b':
-                    this.grades.Add(80);
-                    break;
-                case 'C':
-                case 'c':
-                    this.grades.Add(60);
-                    break;
-                case 'D':
-                case 'd':
-                    this.grades.Add(40);
-                    break;
-                case 'E':
-                case 'e':
-                    this.grades.Add(20);
-                    break;
-                default:
-                    throw new Exception("Wrong letter");
-            }
+            var charToFloat = (char)grade;
+            this.AddGrade(charToFloat);
         }
 
 
@@ -161,4 +170,8 @@ namespace Challenge21
     }
 
 
+
 }
+
+
+

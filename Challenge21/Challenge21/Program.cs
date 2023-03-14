@@ -3,7 +3,8 @@
 Console.WriteLine("Witaj w programie Oceny Pracownika");
 Console.WriteLine();
 
-var employee = new Employee("Łukasz", "Walczak", 30, 'M');
+//var employee = new Employee("Łukasz", "Walczak", 30, 'M');
+var employee = new Supervisor("Łukasz", "Walczak", 30, 'M');
 
 
 while (true)
@@ -26,7 +27,6 @@ while (true)
    
         
 }
-
 var statistics = employee.GetStatistics();
 Console.WriteLine($"Avrerage: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
