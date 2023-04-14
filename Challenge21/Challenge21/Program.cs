@@ -1,15 +1,16 @@
-﻿using Challenge21;
+﻿using Challange21;
 
-Console.WriteLine("Witaj w programie Oceny Pracownika");
+Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
+Console.WriteLine("Witamy w Programie Do Oceny Pracowników");
+Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
 Console.WriteLine();
 
-//var employee = new Employee("Łukasz", "Walczak", 30, 'M');
-var employee = new Supervisor("Łukasz", "Walczak", 30, 'M');
-
+//var employee = new Employee("Łukasz", "Walczak");
+var employee = new Supervisor("Łukasz", "Walczak");
 
 while (true)
 {
-    Console.WriteLine("Dodaj ocenę pracownika");
+    Console.WriteLine("Podaj kolejną ocenę pracownika:");
     var input = Console.ReadLine();
     if (input == "q")
     {
@@ -22,13 +23,12 @@ while (true)
     }
     catch (Exception e)
     {
-        Console.WriteLine($"Exception catched {e.Message}");
+        Console.WriteLine($"Exception catched: {e.Message}");
     }
-   
-        
 }
+
 var statistics = employee.GetStatistics();
-Console.WriteLine($"Avrerage: {statistics.Average}");
+Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
+Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
-Console.WriteLine($"AvrerageLetter: {statistics.AverageLetter}");

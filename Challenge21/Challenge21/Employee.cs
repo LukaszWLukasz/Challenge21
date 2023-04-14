@@ -1,164 +1,119 @@
-﻿using System.Diagnostics;
+﻿using Challenge21;
 
-namespace Challenge21
+public class Employee : IEmployee
 {
-    public class Employee : IEmployee
+    private List<float> grades = new List<float>();
+    public Employee(string name, string surname)
     {
-        private List<float> grades = new List<float>();
-
-        public Employee()
+        this.Name = name;
+        this.Surname = surname;
+    }
+    public string Name { get; private set; }
+    public string Surname { get; private set; }
+    public void AddGrade(float grade)
+    {
+        if (grade >= 0 && grade <= 100)
         {
-
+            this.grades.Add(grade);
         }
-
-        public Employee(string name, string surname, int age, char sex)
+        else
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
-            this.Sex = sex;
+            throw new Exception("Invalid grade value");
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public int Age { get; private set; }
-        public char Sex { get; private set; }
-
-        public void AddGrade(float grade)
+    }
+    public void AddGrade(double grade)
+    {
+        var gradeAsFloat = (float)grade;
+        this.AddGrade(gradeAsFloat);
+    }
+    public void AddGrade(int grade)
+    {
+        var gradeAsFloat = (float)grade;
+        this.AddGrade(gradeAsFloat);
+    }
+    public void AddGrade(char grade)
+    {
+        switch (grade)
         {
-            if (grade >= 0 && grade <= 100)
-            {
-                this.grades.Add(grade);
-            }
-            else
-            {
-                throw new Exception("Invalid grade value");
-            }
+            case 'A':
+            case 'a':
+                this.grades.Add(100);
+                break;
+            case 'B':
+            case 'b':
+                this.grades.Add(80);
+                break;
+            case 'C':
+            case 'c':
+                this.grades.Add(60);
+                break;
+            case 'D':
+            case 'd':
+                this.grades.Add(40);
+                break;
+            case 'E':
+            case 'e':
+                this.grades.Add(20);
+                break;
+            default:
+                throw new Exception("Wrong Letter");
         }
+    }
 
-        public void AddGrade(string grade)
+    public void AddGrade(string grade)
+    {
+        if (float.TryParse(grade, out float result))
         {
-            if (float.TryParse(grade, out float result))
-            {
-                this.AddGrade(result);
-            }
-            else
-            {
-                switch (grade)
-                {
-                    case "A" or "a":
-                        this.grades.Add(100);
-                        break;
-                    case "B" or "b":
-                        this.grades.Add(80);
-                        break;
-                    case "C" or "c":
-                        this.grades.Add(60);
-                        break;
-                    case "D" or "d":
-                        this.grades.Add(40);
-                        break;
-                    case "E" or "e":
-                        this.grades.Add(20);
-                        break;
-                    default:
-                        throw new Exception("Wrong letter");
-                }
-            }
+            this.AddGrade(result);
         }
-
-        public void AddGrade(long grade)
+        else if (char.TryParse(grade, out char charResult))
         {
-            var longToFloat = (float)grade;
-            this.AddGrade(longToFloat);
+            this.AddGrade(charResult);
         }
-
-        public void AddGrade(decimal grade)
+        else
         {
-            var decimalToFloat = (float)grade;
-            this.AddGrade(decimalToFloat);
+            throw new Exception("String is not float");
         }
+    }
 
-        public void AddGrade(int grade)
+    public Statistics GetStatistics()
+    {
+        var statistics = new Statistics();
+        statistics.Average = 0;
+        statistics.Max = float.MinValue;
+        statistics.Min = float.MaxValue;
+
+        foreach (var grade in this.grades)
         {
-            var intToFloat = (float)grade;
-            this.AddGrade(intToFloat);
-        }
-
-        public void AddGrade(char grade)
-        {
-            switch (grade)
-            {
-                case 'A':
-                case 'a':
-                    this.grades.Add(100);
-                    break;
-                case 'B':
-                case 'b':
-                    this.grades.Add(80);
-                    break;
-                case 'C':
-                case 'c':
-                    this.grades.Add(60);
-                    break;
-                case 'D':
-                case 'd':
-                    this.grades.Add(40);
-                    break;
-                case 'E':
-                case 'e':
-                    this.grades.Add(20);
-                    break;
-                default:
-                    throw new Exception("Wrong letter");
-            }
-        }
-
-
-        public Statistics GetStatistics()
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-
-
-            foreach (var grade in this.grades)
+            if (grade >= 0)
             {
                 statistics.Max = Math.Max(statistics.Max, grade);
                 statistics.Min = Math.Min(statistics.Min, grade);
                 statistics.Average += grade;
             }
-
-            statistics.Average = statistics.Average / this.grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    statistics.AverageLetter = 'a';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    statistics.AverageLetter = 'b';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    statistics.AverageLetter = 'c';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    statistics.AverageLetter = 'd';
-                    break;
-                case var average when average <= 19:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
-
-            return statistics;
         }
 
+        statistics.Average /= this.grades.Count;
+
+        switch (statistics.Average)
+        {
+            case var a when a >= 80:
+                statistics.AverageLetter = 'A';
+                break;
+            case var a when a >= 60:
+                statistics.AverageLetter = 'B';
+                break;
+            case var a when a >= 40:
+                statistics.AverageLetter = 'C';
+                break;
+            case var a when a >= 20:
+                statistics.AverageLetter = 'D';
+                break;
+            default:
+                statistics.AverageLetter = 'E';
+                break;
+        }
+
+        return statistics;
     }
-
-
 }
