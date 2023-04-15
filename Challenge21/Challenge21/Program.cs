@@ -1,13 +1,18 @@
 ﻿using Challange21;
+using Challenge21;
 
 Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
 Console.WriteLine("Witamy w Programie Do Oceny Pracowników");
 Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
 Console.WriteLine();
 
-//var employee = new Employee("Łukasz", "Walczak");
-var employee = new Supervisor("Łukasz", "Walczak");
 
+var employee = new EmployeeInFile("Łukasz", "Walczak");
+employee.AddGrade(0.5f);
+
+
+
+/*
 while (true)
 {
     Console.WriteLine("Podaj kolejną ocenę pracownika:");
@@ -32,3 +37,5 @@ Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
 Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
+
+*/
