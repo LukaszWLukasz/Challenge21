@@ -1,7 +1,12 @@
-﻿namespace Challenge21
+﻿using System.Data;
+
+namespace Challenge21
 {
     public class EmployeeInFile : EmployeeBase
     {
+
+        public override event GradeAddedDelegate GradeAdded;
+
         private const string fileName = "grades.txt";
 
         public EmployeeInFile(string name, string surname)
@@ -16,7 +21,14 @@
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
+
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
                 }
+
+
             }
             else
             {
@@ -100,7 +112,6 @@
                         var number = float.Parse(line);
                         grades.Add(number);
                         line = reader.ReadLine();
-
                     }
                 }
 

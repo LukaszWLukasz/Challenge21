@@ -7,12 +7,14 @@ Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
 Console.WriteLine();
 
 
-var employee = new EmployeeInFile("Łukasz", "Walczak");
-employee.AddGrade(0.5f);
+var employee = new EmployeeInMemory("Łukasz", "Walczak");
+var employee1 = new EmployeeInFile ("Łukasz", "Walczak");
+employee.GradeAdded += EmployeeGradeAdded;
+employee1.GradeAdded += Employee1GradeAdded;
 
+employee1.AddGrade(10);
+employee1.AddGrade('a');
 
-
-/*
 while (true)
 {
     Console.WriteLine("Podaj kolejną ocenę pracownika:");
@@ -32,10 +34,21 @@ while (true)
     }
 }
 
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
+
+void Employee1GradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
+
+
 var statistics = employee.GetStatistics();
 Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
 Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
 
-*/
+
