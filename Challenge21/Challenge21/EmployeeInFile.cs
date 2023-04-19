@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿using System.Diagnostics;
 
 namespace Challenge21
 {
@@ -21,13 +21,12 @@ namespace Challenge21
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
-
-                    if (GradeAdded != null)
-                    {
-                        GradeAdded(this, new EventArgs());
-                    }
                 }
 
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
 
             }
             else
@@ -107,6 +106,7 @@ namespace Challenge21
                 using (var reader = File.OpenText($"{fileName}"))
                 {
                     var line = reader.ReadLine();
+
                     while (line != null)
                     {
                         var number = float.Parse(line);
@@ -114,49 +114,17 @@ namespace Challenge21
                         line = reader.ReadLine();
                     }
                 }
-
             }
-
             return grades;
         }
         public Statistics CountStatistics(List<float> grades)
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
 
             foreach (var grade in grades)
             {
-                if (grade >= 0 && grade <= 100)
-                {
-                    statistics.Max = Math.Max(statistics.Max, grade);
-                    statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Average += grade;
-                }
+                statistics.AddGrade(grade);
             }
-
-            statistics.Average /= grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var a when a >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var a when a >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var a when a >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var a when a >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
-
             return statistics;
         }
     }

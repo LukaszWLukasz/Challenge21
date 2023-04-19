@@ -1,5 +1,4 @@
-﻿using Challange21;
-using Challenge21;
+﻿using Challenge21;
 
 Console.WriteLine("+++++++++++++++++++++++++++++++++++++++");
 Console.WriteLine("Witamy w Programie Do Oceny Pracowników");
@@ -12,8 +11,8 @@ var employee1 = new EmployeeInFile ("Łukasz", "Walczak");
 employee.GradeAdded += EmployeeGradeAdded;
 employee1.GradeAdded += Employee1GradeAdded;
 
-employee1.AddGrade(10);
-employee1.AddGrade('a');
+//employee1.AddGrade(55);
+//employee1.AddGrade("b");
 
 while (true)
 {
@@ -26,7 +25,7 @@ while (true)
 
     try
     {
-        employee.AddGrade(input);
+        employee1.AddGrade(input);
     }
     catch (Exception e)
     {
@@ -45,7 +44,7 @@ void Employee1GradeAdded(object sender, EventArgs args)
 }
 
 
-var statistics = employee.GetStatistics();
+var statistics = employee1.GetStatistics();
 Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
 Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
